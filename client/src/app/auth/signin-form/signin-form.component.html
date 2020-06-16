@@ -1,0 +1,29 @@
+<div class="container signin-form">
+    <form [formGroup]="signinForm" (ngSubmit)="onSubmit()">
+        <h1>Sign In</h1>
+        <div class="form-group">
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input id="email" type="email" [class.is-invalid]="email.invalid && email.touched" class="form-control" formControlName="email"/>
+                <div *ngIf="(email.invalid && email.touched) || email.dirty">
+                    <small *ngIf="email.errors?.required" class="text-danger">Email Address is required</small>
+                    <small *ngIf="email.errors?.email" class="text-danger">Please provide a valid email address</small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input id="password" type="password" [class.is-invalid]="password.invalid && password.touched" class="form-control" formControlName="password"/>
+                <div *ngIf="(password.invalid && password.touched) || password.dirty">
+                    <small *ngIf="password.errors?.required" class="text-danger">Password is required</small>
+                    <small *ngIf="password.errors?.minlength" class="text-danger">Password has less than minimum characters</small>
+                    <small *ngIf="password.errors?.maxlength" class="text-danger">Password has more than maximum characters</small>
+                </div>
+            </div>
+            <div class="row">
+                <button type="submit" class="btn btn-primary" [disabled]="!signinForm.valid">Sign In</button>
+                <div class="spacer"></div>
+                <a routerLink="/signup" class="btn btn-secondary">Sign Up</a>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,27 @@
+
+.get-tix {
+    padding-left: 15px;
+}
+
+.get-tix ul {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    justify-content: center;
+    padding-top: 7px;
+}
+
+.get-tix ul li {
+    align-content: center;
+    padding-right: 15px;
+}
+
+.get-tix ul li a {
+    vertical-align: middle;
+    color: white;
+    align-content: center;
+}
+
+.get-tix ul li a:hover {
+    color: silver;
+}

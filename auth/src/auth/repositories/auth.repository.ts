@@ -18,7 +18,7 @@ export class AuthRepository {
         return of({ currentUser: user });
     }
 
-    async signIn(createUser: { email: string, password: string }): Promise<string> {
+    async signIn(createUser: { email: string, password: string }): Promise<any> {
         const { email } = createUser;
         const existingUser = await this.authModel.findOne({ email });
 
@@ -29,14 +29,16 @@ export class AuthRepository {
         if (!await this.passwordService.compare(existingUser.password, createUser.password)) {
             throw new UnauthorizedException('Invalid credentials');
         }
+
+        const userJwt = jwt.sign({
+            id: existingUser._id,
+            email: existingUser.email,
+        }, this.getJWT_KEY());
         
-        return jwt.sign({
-                id: existingUser._id,
-                email: existingUser.email,
-            }, this.getJWT_KEY());
+        return { result: userJwt };
     }
 
-    async signUp(createUser: { email: string, password: string }): Promise<string> {
+    async signUp(createUser: { email: string, password: string }): Promise<any> {
         const { email } = createUser;
         const existingUser = await this.authModel.findOne({ email });
 
@@ -54,7 +56,7 @@ export class AuthRepository {
             email: user.email
         }, this.getJWT_KEY());
 
-        return userJwt;
+        return { result: userJwt };
     }
 
     public signOut(user: any): Observable<any> {
