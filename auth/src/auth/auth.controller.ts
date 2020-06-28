@@ -6,7 +6,7 @@ import { Observable, of } from 'rxjs';
 import { AuthRepository } from './repositories/auth.repository';
 // import { Credentials } from 'src/models/credentials.model';
 import { CreateUserDto } from '../models/user-dto.model';
-import { AuthenticationGuard } from './guards/authentication.guard';
+import { AuthenticationGuard } from '@iltickets/common';
 
 @Controller('users')
 export class AuthController {
