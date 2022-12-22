@@ -29,7 +29,7 @@
     "class-transformer": "^0.2.3",
     "class-validator": "^0.12.2",
     "cookie-session": "^1.4.0",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "mongoose": "^5.9.15",
     "nestjs-cookie-session": "^1.0.0",
     "reflect-metadata": "^0.1.13",
